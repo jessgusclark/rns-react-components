@@ -8,14 +8,13 @@ function App() {
   }
 
   const textDefaults = {
-    "submit": "Submit it!",
-    "placeholder": "Address or something here, please!"
+    "submit": "Submit"
   }
 
   return (
     <div className="App">
       <AddressInput
-        callBack={(event) => handleAddressClick(event)}
+        response={(event) => handleAddressClick(event)}
         textDefaults={textDefaults}
       />
 
