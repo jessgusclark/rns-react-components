@@ -12,16 +12,20 @@ const AddressInput = ({
 
   let input;
 
+  const checkingValue = (value) => {
+    if (!input.value) {
+      return { error: 'no input provided' };
+    }
+
+    if (Helpers.isValid(value)) {
+      return value;
+    }
+
+    return { error: 'input is not valid or not an rsk address.' };
+  };
+
   const handleClick = () => {
-    if (input.value.length === -1) {
-      response({ error: 'no input was provided' });
-    }
-
-    if (Helpers.isValid(input.value)) {
-      response(input.valid);
-    }
-
-    response({ error: 'input is not valid or not an rsk address.' });
+    response(checkingValue(input.value));
   };
 
   return (
@@ -46,7 +50,7 @@ const AddressInput = ({
 
 AddressInput.propTypes = {
   response: propTypes.func.isRequired,
-  textDefaults: propTypes.array,
+  // textDefaults: propTypes.array,
 };
 
 export default AddressInput;

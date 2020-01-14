@@ -55,9 +55,7 @@ describe('tests the AddressInput', () => {
       <AddressInput response={(response) => { result = response; }} />,
     );
 
-    wrapper.find('.form-control').value = 'Response!';
-
     wrapper.find('.button').simulate('click');
-    expect(result.error).toBe('no input was provided');
+    expect(result.error).toBe('no input provided');
   });
 });
