@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     searchButtonClick: (addr) => {
       dispatch({
         type: START_ADDRESS_VALIDATION,
-        term: addr,
+        addr,
       });
     },
   };
