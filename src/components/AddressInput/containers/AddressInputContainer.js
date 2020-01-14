@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
 import { AddressInputComponent } from '../view';
-
+import searchForAddress from '../operations';
 
 const mapStateToProps = (state) => ({
-  term: state.term,
+
 });
-const mapDispatchToProps = () => ({
-  onClick: (term) => { console.log('clicked container', term); },
+
+const mapDispatchToProps = (dispatch) => ({
+  // eslint-disable-next-line no-console
+  onClick: (term) => {
+    dispatch(searchForAddress(term));
+  },
 });
 
 export default connect(
