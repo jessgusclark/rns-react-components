@@ -1,13 +1,13 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import renderer from 'react-test-renderer'
+import renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
 
 import AddressInput from './AddressInput';
 
 describe('tests the AddressInput', () => {
-
   const mockCallBack = jest.fn();
 
   it('should render without crashing', () => {
@@ -30,14 +30,15 @@ describe('tests the AddressInput', () => {
 
   it('should display text defaults', () => {
     const setupText = {
-      submit : 'submit this',
-      placeholder : 'placeholder text',
+      submit: 'submit this',
+      placeholder: 'placeholder text',
     };
 
     const item = renderer.create(
       <AddressInput
         response={mockCallBack}
-        textDefaults={setupText} />
+        textDefaults={setupText}
+      />,
     ).toJSON();
 
     const textInput = item.children[0];
@@ -45,22 +46,18 @@ describe('tests the AddressInput', () => {
 
     const button = item.children[1];
     expect(button.props.value).toBe('submit this');
-
   });
 
-  it('should retrun a value when button is clicked', () => {
-    
-    let result = "";
+  it('should retrun an error when button is clicked without input', () => {
+    let result = '';
 
     const wrapper = mount(
-      <AddressInput response={(response) => {result = response}} />
+      <AddressInput response={(response) => { result = response; }} />,
     );
-    
-    wrapper.find('.form-control').value='Response!';
+
+    wrapper.find('.form-control').value = 'Response!';
 
     wrapper.find('.button').simulate('click');
-    expect(result).toBe('');
-
-  })
-
+    expect(result.error).toBe('no input was provided');
+  });
 });
