@@ -7,8 +7,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // eslint-disable-next-line no-console
-  onClick: (term) => {
+  searchButtonClick: (term) => {
     dispatch(searchForAddress(term));
   },
 });
