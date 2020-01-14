@@ -4,6 +4,7 @@ import {
 
 const initialState = {
   searching: false,
+  validAddress: false,
   searchAddr: '',
   result: '',
 };
@@ -21,6 +22,7 @@ const addressInputReducer = (state = initialState, action) => {
       return {
         ...state,
         searching: false,
+        validAddress: action.valid,
         result: action.result,
       };
     default:
