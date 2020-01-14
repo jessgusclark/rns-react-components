@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as AddressInput } from './AddressInput';
+import AddressInput from './AddressInput';
+
+export default AddressInput;
