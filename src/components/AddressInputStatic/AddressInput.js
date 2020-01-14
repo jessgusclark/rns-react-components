@@ -21,6 +21,11 @@ const AddressInput = ({
       return value;
     }
 
+    // does it end with .rsk?
+    // append .rsk
+    // is it a valid RSK domain?
+    // look up domain address
+
     return { error: 'input is not valid or not an rsk address.' };
   };
 
@@ -46,11 +51,21 @@ const AddressInput = ({
       />
     </div>
   );
+};  
+
+AddressInput.defaultProps = {
+  textDefaults: {
+    submit: 'Submit',
+    placeholder: '',
+  },
 };
 
 AddressInput.propTypes = {
+  textDefaults: propTypes.shape({
+    submit: propTypes.string,
+    placeholder: propTypes.string,
+  }),
   response: propTypes.func.isRequired,
-  // textDefaults: propTypes.array,
 };
 
 export default AddressInput;
