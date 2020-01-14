@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { AddressInputComponent } from '../view';
-import { START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION } from '../types';
+
+import { startAddressValidation, finishAddressValidation } from '../actions';
+// import { START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION } from '../types';
 // import searchForAddress from '../operations';
 
 const mapStateToProps = (state) => ({
@@ -16,16 +18,14 @@ const mapDispatchToProps = (dispatch) => {
   // searchButtonClick: term => dispatch(searchForAddress(term)),
   return {
     searchButtonClick: (addr) => {
-      dispatch({
-        type: START_ADDRESS_VALIDATION,
-        addr,
-      });
+      dispatch(startAddressValidation(addr));
+      dispatch(finishAddressValidation());
 
-      dispatch({
+      /*dispatch({
         type: FINISH_ADDRESS_VALIDATION,
         validAddress: true,
         result: '0x1234567890',
-      });
+      });*/
     },
   };
 };

@@ -12,7 +12,6 @@ const initialState = {
 const addressInputReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_ADDRESS_VALIDATION:
-      console.log(action);
       return {
         ...state,
         searching: true,
@@ -22,8 +21,6 @@ const addressInputReducer = (state = initialState, action) => {
       return {
         ...state,
         searching: false,
-        validAddress: action.valid,
-        result: action.result,
       };
     default:
       return state;
