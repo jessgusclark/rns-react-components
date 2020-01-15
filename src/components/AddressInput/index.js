@@ -6,45 +6,18 @@ import logger from 'redux-logger';
 
 import AddressInputComponent from './containers/AddressInputContainer';
 import reducer from './reducer';
-import { FINISH_ADDRESS_VALIDATION } from './types';
+import customMiddleware from './middleware';
 
-let userCallBack;
-
-const returnAddress = (found, addr) => {
-  if (found) {
-    userCallBack({
-      success: addr,
-    });
-  } else {
-    userCallBack({
-      error: 'input could not be validated as an address',
-    });
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const getAddressValueFromStore = (store) => (next) => (action) => {
-  // return address back to dev:
-  if (action.type === FINISH_ADDRESS_VALIDATION) {
-    returnAddress(action.addressFound, action.addr);
-  }
-
-  // continue processing this action
-  return next(action);
-};
-
-const middleware = [logger, getAddressValueFromStore];
+const middleware = [logger, customMiddleware.middleware];
 
 const store = createStore(
   reducer,
-  // applyMiddleware(logger),
-  // applyMiddleware(getAddressValueFromStore),
   applyMiddleware(...middleware),
 );
 
 const AddressInput = ({ callBack }) => {
   // to return the address to the user:
-  userCallBack = callBack;
+  customMiddleware.setVariable(callBack);
 
   return (
     <Provider store={store}>
