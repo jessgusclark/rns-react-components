@@ -3,10 +3,10 @@ import {
 } from './types';
 
 const initialState = {
-  searching: false,
-  validAddress: false,
+  isSearching: false,
+  // validAddress: false,
   searchAddr: '',
-  result: '',
+  // result: '',
 };
 
 const addressInputReducer = (state = initialState, action) => {
@@ -14,13 +14,13 @@ const addressInputReducer = (state = initialState, action) => {
     case START_ADDRESS_VALIDATION:
       return {
         ...state,
-        searching: true,
+        isSearching: true,
         searchAddr: action.addr,
       };
     case FINISH_ADDRESS_VALIDATION:
       return {
         ...state,
-        searching: false,
+        isSearching: false,
       };
     default:
       return state;

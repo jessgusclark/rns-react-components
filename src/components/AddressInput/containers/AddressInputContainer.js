@@ -6,8 +6,9 @@ import { startAddressValidation, finishAddressValidation } from '../actions';
 // import searchForAddress from '../operations';
 
 const mapStateToProps = (state) => ({
-  search: state.term,
+  term: state.searchAddr,
   isSearching: state.isSearching,
+  test: 'Jesse',
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -19,13 +20,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     searchButtonClick: (addr) => {
       dispatch(startAddressValidation(addr));
-      dispatch(finishAddressValidation());
+      // dispatch(finishAddressValidation());
 
-      /*dispatch({
+      /* dispatch({
         type: FINISH_ADDRESS_VALIDATION,
         validAddress: true,
         result: '0x1234567890',
-      });*/
+      }); */
     },
   };
 };
