@@ -29,12 +29,13 @@ const getAddressValueFromStore = (store) => (next) => (action) => {
   return next(action);
 };
 
-// const middleware = [logger, getAddressValueFromStore];
+const middleware = [logger, getAddressValueFromStore];
 
 const store = createStore(
   reducer,
   // applyMiddleware(logger),
-  applyMiddleware(getAddressValueFromStore),
+  // applyMiddleware(getAddressValueFromStore),
+  applyMiddleware(...middleware),
 );
 
 const AddressInput = ({ callBack }) => {
