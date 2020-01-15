@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddressInput from './components/AddressInput';
 
 function App() {
+  const [address, setAddress] = useState('');
 
-  const callBack = (addr) => {
-    console.log('response from the app!', addr);
+  const callBack = (response) => {
+    if (response.success) {
+      setAddress(response.success);
+    }
+    // handle error
   };
 
   return (
@@ -12,6 +16,11 @@ function App() {
       <AddressInput
         callBack={callBack}
       />
+      <hr />
+      <p>
+        <strong>Return Address:</strong>
+        {address}
+      </p>
     </div>
   );
 }
