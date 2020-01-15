@@ -10,19 +10,23 @@ import { FINISH_ADDRESS_VALIDATION } from './types';
 
 let userCallBack;
 
+const returnAddress = (found, addr) => {
+  if (found) {
+    userCallBack({
+      success: addr,
+    });
+  } else {
+    userCallBack({
+      error: 'input could not be validated as an address',
+    });
+  }
+};
+
 // eslint-disable-next-line no-unused-vars
 const getAddressValueFromStore = (store) => (next) => (action) => {
   // return address back to dev:
   if (action.type === FINISH_ADDRESS_VALIDATION) {
-    if (action.addressFound) {
-      userCallBack({
-        success: action.addr,
-      });
-    } else {
-      userCallBack({
-        error: 'address could not be found',
-      });
-    }
+    returnAddress(action.addressFound, action.addr);
   }
 
   // continue processing this action
