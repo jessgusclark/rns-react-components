@@ -2,6 +2,14 @@
 
 Once complete, this npm package will contain reuable components for RNS.
 
+To show all of the components that are offered, install and run the app.
+
+```
+npm install
+npm run
+```
+
+
 ## AddressInput
 
 Currently the default.

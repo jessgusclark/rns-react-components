@@ -1,28 +1,10 @@
-import React, { useState } from 'react';
-import AddressInput from './components/AddressInput';
+import React from 'react';
+import AddressInputDemo from './demos/AddressInput';
 
 function App() {
-  const [address, setAddress] = useState('');
-
-  const callBack = (response) => {
-    if (response.success) {
-      setAddress(response.success);
-    } else {
-      // handle error
-      setAddress(response.error);
-    }
-  };
-
   return (
     <div>
-      <AddressInput
-        callBack={callBack}
-      />
-      <hr />
-      <p>
-        <strong>Return Address:</strong>
-        {address}
-      </p>
+      <AddressInputDemo />
     </div>
   );
 }
