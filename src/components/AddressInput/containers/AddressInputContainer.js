@@ -4,7 +4,8 @@ import { AddressInputComponent } from '../view';
 import searchForAddress from '../operations';
 
 const mapStateToProps = (state) => ({
-  term: state.searchAddr,
+  searchAddress: state.searchAddr,
+  returnAddress: state.returnAddress,
   isSearching: state.isSearching,
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 // Presentational Component
-const AddressInputComponent = ({ searchButtonClick, term, isSearching }) => {
+const AddressInputComponent = ({searchButtonClick, searchAddress, returnAddress, isSearching}) => {
   let input;
 
   return (
@@ -24,11 +24,16 @@ const AddressInputComponent = ({ searchButtonClick, term, isSearching }) => {
       <h2>Debug Log</h2>
       <ul>
         <li>
-          Term:
-          {term}
+          Search Address:
+          {searchAddress}
         </li>
         <li>
+          Is Searching:
           {isSearching ? 'YES!' : 'No :('}
+        </li>
+        <li>
+          Returning Valid Address:
+          {returnAddress}
         </li>
       </ul>
 
@@ -40,7 +45,8 @@ AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
 
   // debug props:
-  term: propTypes.string,
+  searchAddress: propTypes.string,
+  returnAddress: propTypes.string,
   isSearching: propTypes.bool.isRequired,
 };
 

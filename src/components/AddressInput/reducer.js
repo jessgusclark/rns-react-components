@@ -1,11 +1,11 @@
 import {
-  START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION,
+  START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION, RETURN_VALID_ADDRESS,
 } from './types';
 
 const initialState = {
   isSearching: false,
-  // validAddress: false,
   searchAddr: '',
+  returnAddress: '',
   // result: '',
 };
 
@@ -18,6 +18,11 @@ const addressInputReducer = (state = initialState, action) => {
         isSearching: true,
         searchAddr: action.addr,
       };
+    case RETURN_VALID_ADDRESS:
+      return {
+        ...state,
+        returnAddress: action.addr,
+      }
     case FINISH_ADDRESS_VALIDATION:
       return {
         ...state,
