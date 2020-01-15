@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   searchAddress: state.searchAddr,
   returnAddress: state.returnAddress,
   isSearching: state.isSearching,
+  addressFound: state.addressFound,
 });
 
 const mapDispatchToProps = (dispatch) => ({

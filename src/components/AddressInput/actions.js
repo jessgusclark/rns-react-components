@@ -4,7 +4,6 @@ import {
 
 // ActionCreators
 
-// eslint-disable-next-line import/prefer-default-export
 export const startAddressValidation = (addr) => ({
   type: START_ADDRESS_VALIDATION,
   addr,
@@ -15,7 +14,7 @@ export const returnValidAddress = (addr) => ({
   addr,
 });
 
-export const finishAddressValidation = (addressFound) => ({
+export const finishAddressValidation = (addressFound = true) => ({
   type: FINISH_ADDRESS_VALIDATION,
   addressFound: !!(addressFound),
 });
