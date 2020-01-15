@@ -6,27 +6,28 @@ const initialState = {
   isSearching: false,
   searchAddr: '',
   returnAddress: '',
-  // result: '',
+  addressFound: false,
 };
 
 const addressInputReducer = (state = initialState, action) => {
-  console.log('addressInputReducer hit');
   switch (action.type) {
     case START_ADDRESS_VALIDATION:
       return {
         ...state,
         isSearching: true,
         searchAddr: action.addr,
+        returnAddress: '',
       };
     case RETURN_VALID_ADDRESS:
       return {
         ...state,
         returnAddress: action.addr,
-      }
+      };
     case FINISH_ADDRESS_VALIDATION:
       return {
         ...state,
         isSearching: false,
+        addressFound: action.addressFound,
       };
     default:
       return state;

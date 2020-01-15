@@ -16,17 +16,20 @@ export default (dispatch, addr) => {
   // check if the address is a valid address:
   if (web3.utils.isAddress(addr)) {
     dispatch(returnValidAddress(addr));
-    return dispatch(finishAddressValidation());
+    return dispatch(finishAddressValidation(true));
   }
 
   // check to see if the input is a domain:
   const domain = addr.endsWith('.rsk') ? addr : `${addr}.rsk`;
 
   // mocked!
+  // the following will be replaced with call to 3rd party package once
+  // it is complete.
   if (domain === 'jesse.rsk') {
     dispatch(returnValidAddress('0x12345678901234567890'));
-    return dispatch(finishAddressValidation());
+    return dispatch(finishAddressValidation(true));
   }
 
-  return dispatch(finishAddressValidation());
+  // not valid
+  return dispatch(finishAddressValidation(false));
 };

@@ -15,8 +15,7 @@ export const returnValidAddress = (addr) => ({
   addr,
 });
 
-export const finishAddressValidation = (validAddr, resultAddr) => ({
+export const finishAddressValidation = (addressFound) => ({
   type: FINISH_ADDRESS_VALIDATION,
-  resultAddr,
-  validResult: validAddr,
+  addressFound: !!(addressFound),
 });
