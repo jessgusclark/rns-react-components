@@ -26,6 +26,7 @@ export default (dispatch, addr) => {
   // dispatch(requestAddressFromDomain());
   if (domain === 'jesse.rsk') {
     return dispatch(finishAddressValidation('0x12345678901234567890'));
+    // dispatch(resolveAddressFromDomain());
   }
 
   // not valid
