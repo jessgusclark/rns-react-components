@@ -7,8 +7,10 @@ function App() {
   const callBack = (response) => {
     if (response.success) {
       setAddress(response.success);
+    } else {
+      // handle error
+      setAddress(response.error);
     }
-    // handle error
   };
 
   return (
