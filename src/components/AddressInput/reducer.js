@@ -1,5 +1,5 @@
 import {
-  START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION, RETURN_VALID_ADDRESS,
+  START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION,
 } from './types';
 
 const initialState = {
@@ -18,16 +18,12 @@ const addressInputReducer = (state = initialState, action) => {
         searchAddr: action.addr,
         returnAddress: '',
       };
-    case RETURN_VALID_ADDRESS:
-      return {
-        ...state,
-        returnAddress: action.addr,
-      };
     case FINISH_ADDRESS_VALIDATION:
       return {
         ...state,
         isSearching: false,
-        addressFound: action.addressFound,
+        returnAddress: action.addr,
+        addressFound: !!(action.addr),
       };
     default:
       return state;

@@ -1,5 +1,5 @@
 import {
-  START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION, RETURN_VALID_ADDRESS,
+  START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION,
 } from './types';
 
 // ActionCreators
@@ -9,12 +9,8 @@ export const startAddressValidation = (addr) => ({
   addr,
 });
 
-export const returnValidAddress = (addr) => ({
-  type: RETURN_VALID_ADDRESS,
-  addr,
-});
-
-export const finishAddressValidation = (addressFound = true) => ({
+export const finishAddressValidation = (addr) => ({
   type: FINISH_ADDRESS_VALIDATION,
-  addressFound: !!(addressFound),
+  addr,
+  addressFound: !!(addr),
 });

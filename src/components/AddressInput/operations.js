@@ -2,7 +2,6 @@ import Web3 from 'web3';
 
 import {
   startAddressValidation,
-  returnValidAddress,
   finishAddressValidation,
 } from './actions';
 
@@ -15,8 +14,7 @@ export default (dispatch, addr) => {
 
   // check if the address is a valid address:
   if (web3.utils.isAddress(addr)) {
-    dispatch(returnValidAddress(addr));
-    return dispatch(finishAddressValidation());
+    return dispatch(finishAddressValidation(addr));
   }
 
   // check to see if the input is a domain:
@@ -27,10 +25,9 @@ export default (dispatch, addr) => {
   // it is complete.
   // dispatch(requestAddressFromDomain());
   if (domain === 'jesse.rsk') {
-    dispatch(returnValidAddress('0x12345678901234567890'));
-    return dispatch(finishAddressValidation());
+    return dispatch(finishAddressValidation('0x12345678901234567890'));
   }
 
   // not valid
-  return dispatch(finishAddressValidation(false));
+  return dispatch(finishAddressValidation(''));
 };
