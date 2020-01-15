@@ -1,35 +1,16 @@
 import { connect } from 'react-redux';
 import { AddressInputComponent } from '../view';
 
-import { startAddressValidation, finishAddressValidation } from '../actions';
-// import { START_ADDRESS_VALIDATION, FINISH_ADDRESS_VALIDATION } from '../types';
-// import searchForAddress from '../operations';
+import searchForAddress from '../operations';
 
 const mapStateToProps = (state) => ({
   term: state.searchAddr,
   isSearching: state.isSearching,
-  test: 'Jesse',
 });
 
-const mapDispatchToProps = (dispatch) => {
-  // getState: domain => dispatch(getDomainState(domain)),
-  // searchButtonClick: (term) => () => {
-  //  searchForAddress(term);
-  // },
-  // searchButtonClick: term => dispatch(searchForAddress(term)),
-  return {
-    searchButtonClick: (addr) => {
-      dispatch(startAddressValidation(addr));
-      // dispatch(finishAddressValidation());
-
-      /* dispatch({
-        type: FINISH_ADDRESS_VALIDATION,
-        validAddress: true,
-        result: '0x1234567890',
-      }); */
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  searchButtonClick: (term) => searchForAddress(dispatch, term),
+});
 
 export default connect(
   mapStateToProps,

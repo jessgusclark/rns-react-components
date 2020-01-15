@@ -10,6 +10,7 @@ const initialState = {
 };
 
 const addressInputReducer = (state = initialState, action) => {
+  console.log('addressInputReducer hit');
   switch (action.type) {
     case START_ADDRESS_VALIDATION:
       return {

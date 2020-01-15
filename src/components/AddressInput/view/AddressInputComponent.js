@@ -2,9 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 // Presentational Component
-const AddressInputComponent = ({ searchButtonClick, term, isSearching, test }) => {
+const AddressInputComponent = ({ searchButtonClick, term, isSearching }) => {
   let input;
-  console.log('view props', isSearching);
+
   return (
     <div>
       <input
@@ -30,10 +30,6 @@ const AddressInputComponent = ({ searchButtonClick, term, isSearching, test }) =
         <li>
           {isSearching ? 'YES!' : 'No :('}
         </li>
-        <li>
-          Test:
-          {test}
-        </li>
       </ul>
 
     </div>
@@ -44,7 +40,6 @@ AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
 
   // debug props:
-  test: propTypes.string.isRequired,
   term: propTypes.string,
   isSearching: propTypes.bool.isRequired,
 };
