@@ -6,9 +6,9 @@ import logger from 'redux-logger';
 
 import AddressInputComponent from './containers/AddressInputContainer';
 import reducer from './reducer';
-import customMiddleware from './middleware';
+import callbackMiddleware from './middleware';
 
-const middleware = [logger, customMiddleware.middleware];
+const middleware = [logger, callbackMiddleware.middleware];
 
 const store = createStore(
   reducer,
@@ -17,7 +17,7 @@ const store = createStore(
 
 const AddressInput = ({ callBack }) => {
   // to return the address to the user:
-  customMiddleware.setVariable(callBack);
+  callbackMiddleware.setVariable(callBack);
 
   return (
     <Provider store={store}>
