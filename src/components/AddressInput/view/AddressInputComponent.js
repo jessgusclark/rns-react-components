@@ -6,16 +6,19 @@ const AddressInputComponent = ({ searchButtonClick }) => {
   let input;
 
   return (
-    <div>
+    <div className="addressInput">
       <input
         ref={(node) => {
           input = node;
         }}
+        placeholder=""
+        className="form-control"
       />
 
       <button
         type="submit"
         onClick={() => searchButtonClick(input.value)}
+        className="button"
       >
         Search
       </button>
