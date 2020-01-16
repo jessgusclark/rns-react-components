@@ -38,7 +38,7 @@ describe('addressInput view', () => {
     expect(searchButtonClick).toHaveProperty('callCount', 1);
   });
 
-  it('renders with correct button text', () => {
+  it('renders with custom button text', () => {
     const component = mount(
       <AddressInputComponent
         searchButtonClick={jest.fn()}
@@ -48,5 +48,17 @@ describe('addressInput view', () => {
 
     const button = component.find('button');
     expect(button.text()).toEqual('Go!');
+  });
+
+  it('renders with custom placeholder text', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        strings={{ placeholder: 'enter address or domain' }}
+      />,
+    );
+
+    const addrInput = component.find('input');
+    expect(addrInput.props().placeholder).toEqual('enter address or domain');
   });
 });

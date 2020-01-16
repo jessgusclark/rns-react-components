@@ -22,7 +22,10 @@ function AddressInputDemo() {
       <AddressInput
         callBack={callBack}
         strings={
-          { button_text: 'Go!' }
+          {
+            button_text: 'Go!',
+            placeholder: 'enter address or domain',
+          }
         }
       />
       <hr />

@@ -11,7 +11,7 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
         ref={(node) => {
           input = node;
         }}
-        placeholder=""
+        placeholder={strings.placeholder}
         className="form-control"
       />
 
@@ -28,6 +28,7 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
 
 AddressInputComponent.defaultProps = {
   strings: {
+    placeholder: '',
     button_text: 'Submit',
   },
 };
@@ -35,6 +36,7 @@ AddressInputComponent.defaultProps = {
 AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
   strings: propTypes.shape({
+    placeholder: propTypes.string,
     button_text: propTypes.string,
   }),
 };
