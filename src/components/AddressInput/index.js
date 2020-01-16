@@ -7,6 +7,7 @@ import logger from 'redux-logger';
 import AddressInputComponent from './containers/AddressInputContainer';
 import reducer from './reducer';
 import callbackMiddleware from './middleware';
+import { stringDefaults, stringTypes } from './propTypes';
 
 const middleware = [logger, callbackMiddleware.middleware];
 
@@ -29,16 +30,12 @@ const AddressInput = ({ callBack, strings }) => {
 };
 
 AddressInput.defaultProps = {
-  strings: {
-    button_text: 'Submit',
-  },
+  strings: stringDefaults,
 };
 
 AddressInput.propTypes = {
   callBack: propTypes.func.isRequired,
-  strings: propTypes.shape({
-    button_text: propTypes.string,
-  }),
+  strings: stringTypes,
 };
 
 export default AddressInput;

@@ -1,6 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import { stringDefaults, stringTypes } from '../propTypes';
+
 // Presentational Component
 const AddressInputComponent = ({ searchButtonClick, strings }) => {
   let input;
@@ -34,20 +36,12 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
 };
 
 AddressInputComponent.defaultProps = {
-  strings: {
-    label: '',
-    placeholder: '',
-    button_text: 'Submit',
-  },
+  strings: stringDefaults,
 };
 
 AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
-  strings: propTypes.shape({
-    label: propTypes.string,
-    placeholder: propTypes.string,
-    button_text: propTypes.string,
-  }),
+  strings: stringTypes,
 };
 
 export default AddressInputComponent;
