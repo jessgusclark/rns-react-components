@@ -16,7 +16,7 @@ const store = createStore(
   applyMiddleware(...middleware),
 );
 
-const AddressInput = ({ callBack, strings }) => {
+const AddressInput = ({ callBack, strings, injectHtml }) => {
   // to return the address to the user:
   callbackMiddleware.setVariable(callBack);
 
@@ -24,6 +24,7 @@ const AddressInput = ({ callBack, strings }) => {
     <Provider store={store}>
       <AddressInputComponent
         strings={strings}
+        injectHtml={injectHtml}
       />
     </Provider>
   );
@@ -31,11 +32,17 @@ const AddressInput = ({ callBack, strings }) => {
 
 AddressInput.defaultProps = {
   strings: stringDefaults,
+  injectHtml: {
+    afterInput: <></>,
+  },
 };
 
 AddressInput.propTypes = {
   callBack: propTypes.func.isRequired,
   strings: stringTypes,
+  injectHtml: propTypes.shape({
+    afterInput: propTypes.element,
+  }),
 };
 
 export default AddressInput;

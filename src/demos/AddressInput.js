@@ -16,6 +16,8 @@ function AddressInputDemo() {
     }
   };
 
+  const appendHtml = <div>.rsk</div>;
+
   return (
     <div>
       <h2>AddressInput Demo</h2>
@@ -28,6 +30,9 @@ function AddressInputDemo() {
             placeholder: 'enter address or domain',
           }
         }
+        injectHtml={{
+          afterInput: appendHtml,
+        }}
       />
       <hr />
       <p>{error}</p>

@@ -9,12 +9,9 @@ npm install
 npm run
 ```
 
-
 ## AddressInput
 
-Currently the default.
-
-Accepts an address or a RSK domain name Resolves the address.
+Accepts an address or a RSK domain name and on success, it resolves an address.
 
 - callback (required) - the function that will return either an address or an error.
 - strings (optional) - optional parameters to change text.
