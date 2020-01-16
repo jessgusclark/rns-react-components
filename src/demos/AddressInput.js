@@ -21,6 +21,9 @@ function AddressInputDemo() {
       <h2>AddressInput Demo</h2>
       <AddressInput
         callBack={callBack}
+        strings={
+          { button_text: 'Go!' }
+        }
       />
       <hr />
       <p>{error}</p>

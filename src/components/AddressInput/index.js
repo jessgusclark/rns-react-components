@@ -15,19 +15,30 @@ const store = createStore(
   applyMiddleware(...middleware),
 );
 
-const AddressInput = ({ callBack }) => {
+const AddressInput = ({ callBack, strings }) => {
   // to return the address to the user:
   callbackMiddleware.setVariable(callBack);
 
   return (
     <Provider store={store}>
-      <AddressInputComponent />
+      <AddressInputComponent
+        strings={strings}
+      />
     </Provider>
   );
 };
 
+AddressInput.defaultProps = {
+  strings: {
+    button_text: 'Submit',
+  },
+};
+
 AddressInput.propTypes = {
   callBack: propTypes.func.isRequired,
+  strings: propTypes.shape({
+    button_text: propTypes.string,
+  }),
 };
 
 export default AddressInput;

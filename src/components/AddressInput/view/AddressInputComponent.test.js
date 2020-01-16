@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
 
@@ -8,7 +8,7 @@ import AddressInputComponent from './AddressInputComponent';
 Enzyme.configure({ adapter: new Adapter() });
 
 function setup() {
-  const enzymeWrapper = shallow(<AddressInputComponent searchButtonClick={jest.fn()} />);
+  const enzymeWrapper = mount(<AddressInputComponent searchButtonClick={jest.fn()} />);
   return enzymeWrapper;
 }
 
@@ -26,7 +26,8 @@ describe('addressInput view', () => {
     expect(addrInput.props().className).toEqual('form-control');
 
     const button = component.find('button');
-    expect(button.props().type).toEqual('submit');
+    expect(button.props().type).toEqual('button');
+    expect(button.text()).toEqual('Submit');
     expect(button.props().className).toEqual('button');
   });
 
@@ -35,5 +36,17 @@ describe('addressInput view', () => {
     const wrapper = mount(<AddressInputComponent searchButtonClick={searchButtonClick} />);
     wrapper.find('button').simulate('click');
     expect(searchButtonClick).toHaveProperty('callCount', 1);
+  });
+
+  it('renders with correct button text', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        strings={{ button_text: 'Go!' }}
+      />,
+    );
+
+    const button = component.find('button');
+    expect(button.text()).toEqual('Go!');
   });
 });

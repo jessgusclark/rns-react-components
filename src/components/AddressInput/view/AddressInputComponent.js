@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 // Presentational Component
-const AddressInputComponent = ({ searchButtonClick }) => {
+const AddressInputComponent = ({ searchButtonClick, strings }) => {
   let input;
 
   return (
@@ -16,18 +16,27 @@ const AddressInputComponent = ({ searchButtonClick }) => {
       />
 
       <button
-        type="submit"
+        type="button"
         onClick={() => searchButtonClick(input.value)}
         className="button"
       >
-        Search
+        {strings.button_text}
       </button>
     </div>
   );
 };
 
+AddressInputComponent.defaultProps = {
+  strings: {
+    button_text: 'Submit',
+  },
+};
+
 AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
+  strings: propTypes.shape({
+    button_text: propTypes.string,
+  }),
 };
 
 export default AddressInputComponent;
