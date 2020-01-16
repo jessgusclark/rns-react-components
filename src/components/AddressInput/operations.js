@@ -7,6 +7,10 @@ import {
 
 
 export default (dispatch, addr) => {
+  if (addr === '') {
+    return null;
+  }
+
   dispatch(startAddressValidation(addr));
 
   // a provider is not needed since we are not accessing the network
@@ -18,7 +22,7 @@ export default (dispatch, addr) => {
   }
 
   // check to see if the input is a domain:
-  const domain = addr.endsWith('.rsk') ? addr : `${addr}.rsk`;
+  const domain = addr.endsWith('.rsk') ? addr.toLowerCase() : `${addr.toLowerCase()}.rsk`;
 
   // todo
   // mocked!
