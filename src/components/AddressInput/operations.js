@@ -26,7 +26,7 @@ export default (dispatch, addr) => {
   // it is complete.
   // dispatch(requestAddressFromDomain());
   if (domain === 'jesse.rsk') {
-    return dispatch(finishAddressValidation('0x12345678901234567890'));
+    return dispatch(finishAddressValidation('0x0000000000000000000000000000000000000000'));
     // dispatch(resolveAddressFromDomain());
   }
 

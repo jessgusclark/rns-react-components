@@ -6,8 +6,8 @@ function AddressInputDemo() {
   const [error, setError] = useState('');
 
   const callBack = (response) => {
-    if (response.success) {
-      setAddress(response.success);
+    if (!response.error) {
+      setAddress(response);
       setError('');
     } else {
       // handle error

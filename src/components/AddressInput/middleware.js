@@ -4,7 +4,7 @@ let userCallBack;
 
 const returnAddress = (found, addr) => {
   if (found) {
-    userCallBack({ success: addr });
+    userCallBack(addr);
   } else {
     userCallBack({ error: 'input could not be validated as an address' });
   }
