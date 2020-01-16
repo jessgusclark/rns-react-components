@@ -16,10 +16,28 @@ Currently the default.
 
 Accepts an address or a RSK domain name Resolves the address.
 
-Useage: 
+- callback (required) - the function that will return either an address or an error.
+- strings (optional) - optional parameters to change text.
+
+### Simple Usage:
 
 ```
 <AddressInput
   callBack={callBack}
+/>
+```
+
+### Full/Expanded Useage: 
+
+```
+<AddressInput
+  callBack={callBack}
+  strings={
+    {
+      label: 'Address:',
+      button_text: 'Search',
+      placeholder: 'enter address or domain',
+    }
+  }
 />
 ```

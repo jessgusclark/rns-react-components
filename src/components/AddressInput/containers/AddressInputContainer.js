@@ -3,8 +3,9 @@ import { AddressInputComponent } from '../view';
 
 import searchForAddress from '../operations';
 
-// will be used in the future to pass user's display vars:
-const mapStateToProps = () => ({});
+const mapStateToProps = (state, ownProps) => ({
+  strings: ownProps.strings,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   searchButtonClick: (term) => searchForAddress(dispatch, term),

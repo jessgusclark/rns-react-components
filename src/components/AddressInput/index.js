@@ -7,6 +7,7 @@ import logger from 'redux-logger';
 import AddressInputComponent from './containers/AddressInputContainer';
 import reducer from './reducer';
 import callbackMiddleware from './middleware';
+import { stringDefaults, stringTypes } from './propTypes';
 
 const middleware = [logger, callbackMiddleware.middleware];
 
@@ -15,19 +16,26 @@ const store = createStore(
   applyMiddleware(...middleware),
 );
 
-const AddressInput = ({ callBack }) => {
+const AddressInput = ({ callBack, strings }) => {
   // to return the address to the user:
   callbackMiddleware.setVariable(callBack);
 
   return (
     <Provider store={store}>
-      <AddressInputComponent />
+      <AddressInputComponent
+        strings={strings}
+      />
     </Provider>
   );
 };
 
+AddressInput.defaultProps = {
+  strings: stringDefaults,
+};
+
 AddressInput.propTypes = {
   callBack: propTypes.func.isRequired,
+  strings: stringTypes,
 };
 
 export default AddressInput;

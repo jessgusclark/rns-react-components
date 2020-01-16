@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
 
@@ -8,7 +8,7 @@ import AddressInputComponent from './AddressInputComponent';
 Enzyme.configure({ adapter: new Adapter() });
 
 function setup() {
-  const enzymeWrapper = shallow(<AddressInputComponent searchButtonClick={jest.fn()} />);
+  const enzymeWrapper = mount(<AddressInputComponent searchButtonClick={jest.fn()} />);
   return enzymeWrapper;
 }
 
@@ -24,9 +24,11 @@ describe('addressInput view', () => {
     const addrInput = component.find('input');
     expect(addrInput.props().placeholder).toEqual('');
     expect(addrInput.props().className).toEqual('form-control');
+    expect(addrInput.props().id).toEqual('');
 
     const button = component.find('button');
-    expect(button.props().type).toEqual('submit');
+    expect(button.props().type).toEqual('button');
+    expect(button.text()).toEqual('Submit');
     expect(button.props().className).toEqual('button');
   });
 
@@ -35,5 +37,42 @@ describe('addressInput view', () => {
     const wrapper = mount(<AddressInputComponent searchButtonClick={searchButtonClick} />);
     wrapper.find('button').simulate('click');
     expect(searchButtonClick).toHaveProperty('callCount', 1);
+  });
+
+  it('renders with custom button text', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        strings={{ button_text: 'Go!' }}
+      />,
+    );
+
+    const button = component.find('button');
+    expect(button.text()).toEqual('Go!');
+  });
+
+  it('renders with custom placeholder text', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        strings={{ placeholder: 'enter address or domain' }}
+      />,
+    );
+
+    const addrInput = component.find('input');
+    expect(addrInput.props().placeholder).toEqual('enter address or domain');
+  });
+
+  it('renders with custom label text', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        strings={{ label: 'Address' }}
+      />,
+    );
+
+    const label = component.find('label');
+    expect(label.props().htmlFor).toEqual('rns-address-input');
+    expect(label.text()).toEqual('Address');
   });
 });
