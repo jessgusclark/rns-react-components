@@ -5,6 +5,7 @@ import searchForAddress from '../operations';
 
 const mapStateToProps = (state, ownProps) => ({
   strings: ownProps.strings,
+  injectHtml: ownProps.injectHtml,
 });
 
 const mapDispatchToProps = (dispatch) => ({

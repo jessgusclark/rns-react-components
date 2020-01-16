@@ -75,4 +75,17 @@ describe('addressInput view', () => {
     expect(label.props().htmlFor).toEqual('rns-address-input');
     expect(label.text()).toEqual('Address');
   });
+
+  it('renders with injectHtml afterInput', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        injectHtml={{ afterInput: <span>.rsk</span> }}
+      />,
+    );
+
+    const div = component.find('span');
+    expect(div.length).toBe(1);
+    expect(div.text()).toEqual('.rsk');
+  });
 });

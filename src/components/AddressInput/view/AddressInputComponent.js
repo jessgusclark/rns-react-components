@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { stringDefaults, stringTypes } from '../propTypes';
 
 // Presentational Component
-const AddressInputComponent = ({ searchButtonClick, strings }) => {
+const AddressInputComponent = ({ searchButtonClick, strings, injectHtml }) => {
   let input;
 
   return (
@@ -24,6 +24,10 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
         id={strings.label ? 'rns-address-input' : ''}
       />
 
+      {injectHtml.afterInput && (
+        injectHtml.afterInput
+      )}
+
       <button
         type="button"
         onClick={() => searchButtonClick(input.value)}
@@ -37,11 +41,17 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
 
 AddressInputComponent.defaultProps = {
   strings: stringDefaults,
+  injectHtml: {
+    afterInput: <></>,
+  },
 };
 
 AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
   strings: stringTypes,
+  injectHtml: propTypes.shape({
+    afterInput: propTypes.element,
+  }),
 };
 
 export default AddressInputComponent;
