@@ -7,12 +7,19 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
 
   return (
     <div className="addressInput">
+      {strings.label && (
+        <label htmlFor="rns-address-input">
+          {strings.label}
+        </label>
+      )}
+
       <input
         ref={(node) => {
           input = node;
         }}
         placeholder={strings.placeholder}
         className="form-control"
+        id={strings.label ? 'rns-address-input' : ''}
       />
 
       <button
@@ -28,6 +35,7 @@ const AddressInputComponent = ({ searchButtonClick, strings }) => {
 
 AddressInputComponent.defaultProps = {
   strings: {
+    label: '',
     placeholder: '',
     button_text: 'Submit',
   },
@@ -36,6 +44,7 @@ AddressInputComponent.defaultProps = {
 AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
   strings: propTypes.shape({
+    label: propTypes.string,
     placeholder: propTypes.string,
     button_text: propTypes.string,
   }),

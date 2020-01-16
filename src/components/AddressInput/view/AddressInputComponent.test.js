@@ -24,6 +24,7 @@ describe('addressInput view', () => {
     const addrInput = component.find('input');
     expect(addrInput.props().placeholder).toEqual('');
     expect(addrInput.props().className).toEqual('form-control');
+    expect(addrInput.props().id).toEqual('');
 
     const button = component.find('button');
     expect(button.props().type).toEqual('button');
@@ -60,5 +61,18 @@ describe('addressInput view', () => {
 
     const addrInput = component.find('input');
     expect(addrInput.props().placeholder).toEqual('enter address or domain');
+  });
+
+  it('renders with custom label text', () => {
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        strings={{ label: 'Address' }}
+      />,
+    );
+
+    const label = component.find('label');
+    expect(label.props().htmlFor).toEqual('rns-address-input');
+    expect(label.text()).toEqual('Address');
   });
 });

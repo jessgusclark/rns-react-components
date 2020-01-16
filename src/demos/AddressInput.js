@@ -23,6 +23,7 @@ function AddressInputDemo() {
         callBack={callBack}
         strings={
           {
+            label: 'Address: ',
             button_text: 'Go!',
             placeholder: 'enter address or domain',
           }
