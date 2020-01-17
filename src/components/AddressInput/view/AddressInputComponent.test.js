@@ -88,4 +88,29 @@ describe('addressInput view', () => {
     expect(div.length).toBe(1);
     expect(div.text()).toEqual('.rsk');
   });
+
+  it('renders with custom CSS', () => {
+    const classNames = [
+      { div: 'myDiv' },
+      { label: 'myLabel' },
+      { input: 'myInput' },
+      { button: 'myButton' },
+    ];
+
+    const component = mount(
+      <AddressInputComponent
+        searchButtonClick={jest.fn()}
+        classNames={classNames}
+      />,
+    );
+
+    const div = component.find('div');
+    expect(div.props().className).toBe('myDiv');
+    const label = component.find('label');
+    expect(label.props().className).toBe('myLabel');
+    const input = component.find('input');
+    expect(input.props().className).toBe('myLabel');
+    const button = component.find('button');
+    expect(button.props().className).toBe('myButton');
+  });
 });

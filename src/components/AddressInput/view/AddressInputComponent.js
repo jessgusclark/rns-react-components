@@ -1,16 +1,27 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import { stringDefaults, stringTypes } from '../propTypes';
+import {
+  stringDefaults, stringTypes,
+  classNameDefaults, classNameTypes,
+} from '../propTypes';
 
 // Presentational Component
-const AddressInputComponent = ({ searchButtonClick, strings, injectHtml }) => {
+const AddressInputComponent = ({
+  searchButtonClick,
+  strings,
+  injectHtml,
+  classNames,
+}) => {
   let input;
 
   return (
-    <div className="addressInput">
+    <div className={classNames.div}>
       {strings.label && (
-        <label htmlFor="rns-address-input">
+        <label
+          htmlFor="rns-address-input"
+          className={classNames.label}
+        >
           {strings.label}
         </label>
       )}
@@ -21,6 +32,7 @@ const AddressInputComponent = ({ searchButtonClick, strings, injectHtml }) => {
         }}
         placeholder={strings.placeholder}
         className="form-control"
+        css={classNames.input}
         id={strings.label ? 'rns-address-input' : ''}
       />
 
@@ -31,7 +43,7 @@ const AddressInputComponent = ({ searchButtonClick, strings, injectHtml }) => {
       <button
         type="button"
         onClick={() => searchButtonClick(input.value)}
-        className="button"
+        className={classNames.button}
       >
         {strings.button_text}
       </button>
@@ -41,6 +53,7 @@ const AddressInputComponent = ({ searchButtonClick, strings, injectHtml }) => {
 
 AddressInputComponent.defaultProps = {
   strings: stringDefaults,
+  classNames: classNameDefaults,
   injectHtml: {
     afterInput: <></>,
   },
@@ -49,6 +62,7 @@ AddressInputComponent.defaultProps = {
 AddressInputComponent.propTypes = {
   searchButtonClick: propTypes.func.isRequired,
   strings: stringTypes,
+  classNames: classNameTypes,
   injectHtml: propTypes.shape({
     afterInput: propTypes.element,
   }),

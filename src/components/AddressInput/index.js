@@ -7,7 +7,10 @@ import logger from 'redux-logger';
 import AddressInputComponent from './containers/AddressInputContainer';
 import reducer from './reducer';
 import callbackMiddleware from './middleware';
-import { stringDefaults, stringTypes } from './propTypes';
+import {
+  stringDefaults, stringTypes,
+  classNameDefaults, classNameTypes,
+} from './propTypes';
 
 const middleware = [logger, callbackMiddleware.middleware];
 
@@ -16,7 +19,7 @@ const store = createStore(
   applyMiddleware(...middleware),
 );
 
-const AddressInput = ({ callBack, strings, injectHtml }) => {
+const AddressInput = ({ callBack, strings, classNames, injectHtml }) => {
   // to return the address to the user:
   callbackMiddleware.setVariable(callBack);
 
@@ -24,6 +27,7 @@ const AddressInput = ({ callBack, strings, injectHtml }) => {
     <Provider store={store}>
       <AddressInputComponent
         strings={strings}
+        classNames={classNames}
         injectHtml={injectHtml}
       />
     </Provider>
@@ -32,6 +36,7 @@ const AddressInput = ({ callBack, strings, injectHtml }) => {
 
 AddressInput.defaultProps = {
   strings: stringDefaults,
+  classNames: classNameDefaults,
   injectHtml: {
     afterInput: <></>,
   },
@@ -39,6 +44,7 @@ AddressInput.defaultProps = {
 
 AddressInput.propTypes = {
   callBack: propTypes.func.isRequired,
+  classNames: classNameTypes,
   strings: stringTypes,
   injectHtml: propTypes.shape({
     afterInput: propTypes.element,

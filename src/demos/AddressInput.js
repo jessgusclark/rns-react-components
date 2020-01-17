@@ -30,6 +30,14 @@ function AddressInputDemo() {
             placeholder: 'enter address or domain',
           }
         }
+        classNames={
+          {
+            div: 'hello',
+            label: 'label',
+            input: 'ipt',
+            button: 'btn',
+          }
+        }
         injectHtml={{
           afterInput: appendHtml,
         }}
