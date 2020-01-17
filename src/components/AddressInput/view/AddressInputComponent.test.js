@@ -15,11 +15,14 @@ function setup() {
 describe('addressInput view', () => {
   it('renders without crashing', () => {
     const component = setup();
-    expect(component.find('div').hasClass('addressInput')).toBe(true);
+    expect(component.find('div').hasClass('address-input')).toBe(true);
   });
 
   it('renders with default text, placeholder, and class names', () => {
     const component = setup();
+
+    const div = component.find('div');
+    expect(div.hasClass('address-input')).toBe(true);
 
     const addrInput = component.find('input');
     expect(addrInput.props().placeholder).toEqual('');
@@ -90,17 +93,16 @@ describe('addressInput view', () => {
   });
 
   it('renders with custom CSS', () => {
-    const classNames = [
-      { div: 'myDiv' },
-      { label: 'myLabel' },
-      { input: 'myInput' },
-      { button: 'myButton' },
-    ];
-
     const component = mount(
       <AddressInputComponent
         searchButtonClick={jest.fn()}
-        classNames={classNames}
+        strings={{ label: 'address' }}
+        classNames={{
+          div: 'myDiv',
+          label: 'myLabel',
+          input: 'myInput',
+          button: 'myButton',
+        }}
       />,
     );
 
@@ -109,7 +111,7 @@ describe('addressInput view', () => {
     const label = component.find('label');
     expect(label.props().className).toBe('myLabel');
     const input = component.find('input');
-    expect(input.props().className).toBe('myLabel');
+    expect(input.props().className).toBe('myInput');
     const button = component.find('button');
     expect(button.props().className).toBe('myButton');
   });

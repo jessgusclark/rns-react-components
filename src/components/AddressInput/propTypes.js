@@ -15,7 +15,7 @@ export const stringTypes = (
 );
 
 export const classNameDefaults = ({
-  div: 'addressInput',
+  div: 'address-input',
   label: '',
   input: 'form-control',
   button: 'button',

@@ -31,8 +31,7 @@ const AddressInputComponent = ({
           input = node;
         }}
         placeholder={strings.placeholder}
-        className="form-control"
-        css={classNames.input}
+        className={classNames.input}
         id={strings.label ? 'rns-address-input' : ''}
       />
 
